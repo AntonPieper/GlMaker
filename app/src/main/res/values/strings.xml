@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GlMaker</string>
+    <string name="editTextHint">Enter code here</string>
+    <string name="tab_description">tab key</string>
+    <string name="editor_hint">Type Code here</string>
+
+</resources>

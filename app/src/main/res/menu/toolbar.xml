@@ -1,0 +1,13 @@
+<menu
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<item
+		android:id="@+id/shaderType"
+		android:title="▲"
+		app:showAsAction="always"/>
+	<item
+		android:id="@+id/item"
+		android:title="Show/Hide"
+		android:icon="@drawable/visibility_off"
+		app:showAsAction="always"/>
+</menu>

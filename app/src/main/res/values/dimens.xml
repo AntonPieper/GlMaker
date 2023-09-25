@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size">14sp</dimen>
+    <dimen name="keyboard_btn_width">35sp</dimen>
+    <dimen name="keyboard_btn_height">50sp</dimen>
+    <dimen name="keyboard_btn_spacing">2dp</dimen>
+    <dimen name="keyboard_btn_text_size">20sp</dimen>
+    <dimen name="keyboard_btn_radius">8dp</dimen>
+    <dimen name="editor_padding">8dp</dimen>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="syntax_comment">#808080</color>
+    <color name="syntax_invalid">#FF1744</color>
+    <color name="syntax_directive">#F44336</color>
+    <color name="syntax_builtin_function">#00B0FF</color>
+    <color name="syntax_keyword">#2196F3</color>
+    <color name="syntax_type_primitive">#2196F3</color>
+    <color name="syntax_type_vector">#2196F3</color>
+    <color name="syntax_type_matrix">#2196F3</color>
+    <color name="syntax_atomic_counter">#2196F3</color>
+    <color name="syntax_type_sampler">#03A9F4</color>
+    <color name="syntax_type_image">#03A9F4</color>
+    <color name="syntax_type_qualifier">#00BCD4</color>
+    <color name="syntax_type">#FFC107</color>
+    <color name="syntax_identifier">#E3F2FD</color>
+    <color name="syntax_field_selection">#BBDEFB</color>
+    <color name="syntax_number_literal">#8BC34A</color>
+    <color name="syntax_bool_literal">#FF9800</color>
+    <color name="syntax_operator">#EEEEEE</color>
+    <color name="syntax_precision">#00BCD4</color>
+    <color name="syntax_control_flow">#FF9800</color>
+    <color name="editor_line_numbers">#808080</color>
+    <color name="editor_text">#FFFFFF</color>
+    <color name="background_editor">#80000000</color>
+    <color name="button">@color/material_dynamic_neutral70</color>
+    <color name="button_highlight">@color/material_dynamic_neutral100</color>
+</resources>

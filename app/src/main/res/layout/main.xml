@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/slidingPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0000"
+        android:elevation="4dp"
+        android:orientation="vertical"
+        app:layout_behavior="com.github.techisfun.android.topsheet.TopSheetBehavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/error_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorSurfaceContainer" />
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.Material3.Toolbar.Surface"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_drawable" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0">
+
+            <android.opengl.GLSurfaceView
+                android:id="@+id/gl_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ScrollView
+                android:id="@+id/scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background_editor"
+                android:fillViewport="true"
+                android:paddingTop="?attr/actionBarSize">
+                <!-- Hardcode gravity to left because GLSL source code is always
+                    aligned to the left. -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/line_numbers_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0"
+                            android:orientation="horizontal">
+
+                            <de.antonpieper.glmaker.widget.LineNumbers
+                                android:id="@+id/line_numbers"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/editor_padding"
+                                android:textColor="@color/editor_line_numbers"
+                                android:textSize="12sp"
+                                android:typeface="monospace"
+                                app:fontFamily="@font/jetbrains_mono" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:background="@color/editor_line_numbers" />
+                        </LinearLayout>
+
+                        <de.antonpieper.glmaker.widget.SyntaxEditor
+                            android:id="@+id/editor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:autofillHints=""
+                            android:background="@android:color/transparent"
+                            android:gravity="left|top"
+                            android:hint="@string/editor_hint"
+                            android:imeOptions="flagNoExtractUi"
+                            android:inputType="textMultiLine|textNoSuggestions"
+                            android:padding="@dimen/editor_padding"
+                            android:textColor="@color/editor_text"
+                            android:textSize="12sp"
+                            android:typeface="monospace"
+                            app:fontFamily="@font/jetbrains_mono"
+                            android:scrollHorizontally="true"
+                            tools:ignore="RtlHardcoded" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </ScrollView>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/extra_row_container"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/keyboard_btn_height"
+            android:background="?attr/colorSurfaceContainerLow"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:textAlignment="center">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/extra_row_tab_button"
+                style="@style/Widget.Material3.Button.Icon"
+                android:layout_width="@dimen/keyboard_btn_width"
+                android:layout_height="@dimen/keyboard_btn_height"
+                android:layout_marginHorizontal="@dimen/keyboard_btn_spacing"
+                android:contentDescription="@string/tab_description"
+                android:elevation="0dp"
+                android:gravity="center"
+                android:padding="0dp"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="@dimen/keyboard_btn_text_size"
+                app:backgroundTint="?attr/colorSurfaceVariant"
+                app:cornerRadius="@dimen/keyboard_btn_radius"
+                app:icon="@drawable/keyboard_tab"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="@dimen/keyboard_btn_text_size"
+                app:iconTint="?attr/colorOnSurface" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/extra_row_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
