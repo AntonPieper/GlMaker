@@ -1,11 +1,16 @@
 package de.antonpieper.glmaker.widget;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.Spanned;
+import android.text.TextPaint;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.LineHeightSpan;
+import android.text.style.ReplacementSpan;
 import android.util.AttributeSet;
 
 import androidx.annotation.ColorInt;
@@ -50,6 +55,14 @@ public class SyntaxEditor extends AppCompatEditText {
 
             @Override
             public void afterTextChanged(Editable e) {
+                if (e == null || e.length() == 0) {
+                    return;
+                }
+                clearSpans(e, 0, e.length(), TabWidthSpan.class);
+                String s = e.toString();
+                for (int i = -1, length = s.length(); (i = s.indexOf('\t', i + 1)) < length && i != -1; ) {
+                    e.setSpan(new TabWidthSpan(2), i, i + 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
                 highlight(e, false);
             }
         });
@@ -99,6 +112,51 @@ public class SyntaxEditor extends AppCompatEditText {
         T[] spans = e.getSpans(start, end, clazz);
         for (T span : spans) {
             e.removeSpan(span);
+        }
+    }
+
+    private static class TabWidthSpan
+            extends ReplacementSpan
+            implements LineHeightSpan.WithDensity {
+        private final int width;
+
+        private TabWidthSpan(int width) {
+            this.width = width;
+        }
+
+        @Override
+        public int getSize(
+                @NonNull Paint paint,
+                CharSequence text,
+                int start,
+                int end,
+                Paint.FontMetricsInt fm) {
+            return (int) (width * paint.measureText("m"));
+        }
+
+        @Override
+        public void draw(
+                @NonNull Canvas canvas,
+                CharSequence text,
+                int start,
+                int end,
+                float x,
+                int top,
+                int y,
+                int bottom,
+                @NonNull Paint paint) {
+        }
+
+        @Override
+        public void chooseHeight(CharSequence text, int start, int end,
+                                 int spanstartv, int lineHeight,
+                                 Paint.FontMetricsInt fm, TextPaint paint) {
+            paint.getFontMetricsInt(fm);
+        }
+
+        @Override
+        public void chooseHeight(CharSequence text, int start, int end,
+                                 int spanstartv, int lineHeight, Paint.FontMetricsInt fm) {
         }
     }
 }

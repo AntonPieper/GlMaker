@@ -30,21 +30,21 @@ public class GLRenderer implements Renderer, AutoCloseable {
                                                  "in vec4 position;\n" +
                                                  "\n" +
                                                  "void main(void) {\n" +
-                                                 "    gl_Position = position;\n" +
+                                                 "\tgl_Position = position;\n" +
                                                  "}\n";
     private static final String DEFAULT_FRAGMENT = "#version 320 es\n" +
                                                    "precision highp float;\n" +
                                                    "out vec4 fragColor;\n" +
                                                    "\n" +
                                                    "void main(void) {\n" +
-                                                   "    fragColor = vec4(0.5);\n" +
+                                                   "\tfragColor = vec4(0.5);\n" +
                                                    "}\n";
     private static final String DRAW_VERTEX = "#version 320 es\n" +
                                               "precision highp float;\n" +
                                               "in vec4 position;\n" +
                                               "\n" +
                                               "void main(void) {\n" +
-                                              "    gl_Position = position;\n" +
+                                              "\tgl_Position = position;\n" +
                                               "}\n";
     private static final String DRAW_FRAGMENT = "#version 320 es\n" +
                                                 "precision highp float;\n" +
@@ -53,9 +53,9 @@ public class GLRenderer implements Renderer, AutoCloseable {
                                                 "out vec4 fragColor;\n" +
                                                 "\n" +
                                                 "void main(void) {\n" +
-                                                "    fragColor = texture(frame, gl_FragCoord.xy / resolution);\n" +
+                                                "\tfragColor = texture(frame, gl_FragCoord.xy / resolution);\n" +
                                                 "}\n";
-    private Deque<UniformPlugin> plugins = new ArrayDeque<>();
+    private final Deque<UniformPlugin> plugins = new ArrayDeque<>();
 
     @FunctionalInterface
     public interface ShaderTransformer {
